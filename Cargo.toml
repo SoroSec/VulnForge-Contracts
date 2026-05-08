@@ -1,0 +1,24 @@
+[workspace]
+members = [
+    "contracts/vulnerable/vault",
+    "contracts/vulnerable/overflow_treasury",
+    "contracts/vulnerable/broken_access",
+    "contracts/vulnerable/replay_attack",
+    "contracts/patched/vault",
+    "contracts/patched/overflow_treasury",
+    "contracts/patched/broken_access",
+    "contracts/patched/replay_attack",
+    "utils",
+]
+resolver = "2"
+
+[workspace.dependencies]
+arbitrary = "=1.3.2"
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+panic = "abort"
+codegen-units = 1
